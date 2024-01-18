@@ -37,6 +37,7 @@ class Cuti extends \yii\db\ActiveRecord
             [['NIP', 'lama_cuti'], 'integer'],
             [['tgl_cuti', 'tgl_cuti_berakhir'], 'string', 'max' => 50],
             [['status', 'file'], 'string', 'max' => 50],
+            [['nama'],'safe']
         ];
     }
 
@@ -46,7 +47,9 @@ class Cuti extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            
             'NIP' => 'Nip',
+            'Nama' => 'Nama',
             'lama_cuti' => 'Lama Cuti',
             'tgl_cuti' => 'Tgl Cuti',
             'tgl_cuti_berakhir' => 'Tgl Cuti Berakhir',

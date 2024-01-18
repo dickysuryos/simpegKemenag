@@ -12,6 +12,14 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+            'formatter' => [
+                'dateFormat' => 'dd-MMMM-yyyy',
+                'decimalSeparator' => ',',
+                'thousandSeparator' => ' ',
+                'currencyCode' => 'IDR',
+                'locale' => 'id_ID'
+           ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '4fU2sX1SoCHIBC5AJwMonSvz2ZN2IzbA',

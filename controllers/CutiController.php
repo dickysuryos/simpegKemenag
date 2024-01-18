@@ -93,6 +93,7 @@ class CutiController extends Controller
             print_r($model);
             $model->NIP = \Yii::$app->user->identity->NIP;
             $model->status = 'sedang diproses';
+
             // $model->tgl_cuti = $model->tgl_cuti->format('Y-m-d');
             //  $model->tgl_cuti_berakhir = $model->tgl_cuti_berakhir->format('Y-m-d');
             if ($model->load($this->request->post()) && $model->save()) {
@@ -185,6 +186,13 @@ public function actionHistory() {
      
         $html = $this->renderPartial('cetak_cuti',['model'=>$model]);
         $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/vendor/autoload.php']);
+        $mpdf->AddPageByArray([
+            'margin-left' => 10,
+            'margin-right' => 10,
+            'margin-top' => 10,
+            'margin-bottom' => 0,
+            'format' => 'A4'
+        ]);
         $mpdf->SetDisplayMode('fullpage');
         $mpdf->list_indent_first_level = 0;  // 1 or 0 - whether to indent the first level of a list
         $mpdf->WriteHTML($html);

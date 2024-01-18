@@ -61,6 +61,8 @@ class CutiSearch extends Cuti
             'desc'=> ['Jabatan'=> SORT_DESC],
         ];
 
+
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -73,6 +75,7 @@ class CutiSearch extends Cuti
         $query->andFilterWhere([
             'Pegawai.NIP' => $this->NIP,
         ]);
+       
 
         $query->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'file', $this->file])
@@ -98,17 +101,17 @@ class CutiSearch extends Cuti
             // $query->where('0=1');
             return $dataProvider;
         }
-
+       
         // grid filtering conditions
         $query->andFilterWhere([
             'Pegawai.NIP' => \Yii::$app->user->identity->NIP,
         ]);
+   
 
         $query->andFilterWhere(['like', 'status', $this->status])
                 ->andFilterWhere(['like', 'file', $this->file]);
 
-        
-        return $dataProvider;
+               return $dataProvider;
     }
 
   

@@ -60,7 +60,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username'=> $username,'status'=> self::STATUS_ACTIVE]);
+        if (static::findOne(['username'=> $username,'status'=> self::STATUS_ACTIVE]) != NIL ) {
+            return static::findOne(['username'=> $username,'status'=> self::STATUS_ACTIVE]);
+        }
+        // login menggunakan NIP
+        return static::findOne(['NIP'=> $username ,'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -102,7 +106,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getNIP()
+    public function getPegawai()
     {
         return $this->hasOne(Pegawai::class, ['NIP' => 'NIP']);
     }
@@ -116,4 +120,17 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function findByNIP($NIP) {
         return static::findOne(['NIP'=> $NIP,'status'=> self::STATUS_ACTIVE]);
     }
+    public function getNama()
+    {
+        return $this->pegawai->Nama;
+    }
+
+    public function getNIP()
+    {
+        return $this->pegawai->NIP;
+    }
+
+
+
+
 }

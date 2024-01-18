@@ -87,7 +87,10 @@ a.desc:after {
     margin-bottom: 1rem;
 }
 
-.navbar-custom {
-    background-color: #6b8896; /* Background color */
-    color: #ffffff; /* Font color */
+.navbar {
+    z-index: 1000;
+}
+
+.topView {
+    z-index: 9999; /* Nilai z-index yang lebih tinggi akan membuat elemen berada di atas elemen lain */
 }
